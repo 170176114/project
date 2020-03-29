@@ -69,7 +69,7 @@ router.post('/', function (req, res, next) {
     return next(err);
   }
 })
-
+var username = ""
 // GET route to redirect to '/profile' page after registering
 router.get('/main', function (req, res, next) {
   User.findById(req.session.userId)
@@ -94,6 +94,45 @@ router.get('/main', function (req, res, next) {
       }
     });
 });
+router.get('/records', (req, res) => {
+  MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("python");
+      dbo.collection("records").aggregate([
+          {
+              $group: {
+                  _id: {name: "$name", DateAndTime: "$DateAndTime"}, count: {$sum: 1} 
+              }
+      },
+      { $sort: {"_id.DateAndTime" : -1}}
+  ]).toArray(function(err, result){
+              if (err) throw err;
+              res.json(result);
+              db.close();
+          });
+
+    });
+    
+});
+
+router.get('/video', (req, res) => {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("python");
+    dbo.collection('video').find({}).toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+      db.close();
+    });
+
+  });
+});
+
+router.get('/all_record', function (req, res, next){
+  res.render(path.join(__dirname,'../views/record.ejs'),{name:username})
+})
+
+
 
 
 // GET for logout

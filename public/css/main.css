@@ -19,10 +19,10 @@ justify-content: space-evenly;
 }
 
 .flex-item {
-background: tan;
+background: whitesmoke;
 padding: 5px;
-width: 450px;
-height: 400px;
+width: 480px;
+height: 300px;
 margin-top: 10px;
 line-height: 30px;
 color: black;
