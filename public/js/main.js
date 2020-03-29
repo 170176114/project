@@ -13,7 +13,7 @@ $.ajax({
                 '<video width="320" height="240" controls>' +
                 '<source src="/static/video/' + data[i].name + '.mp4" type="video/mp4">' +
                 '</video>' + '<br>' +
-                data[i].name +
+                'File name: ' + data[i].name +
                 '</li>'
             );
         }

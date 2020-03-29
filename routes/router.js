@@ -132,7 +132,21 @@ router.get('/all_record', function (req, res, next){
   res.render(path.join(__dirname,'../views/record.ejs'),{name:username})
 })
 
+router.get('/image', function (req, res, next){
+  res.render(path.join(__dirname,'../views/upload.ejs'),{name:username})
+})
 
+router.post('/fileupload', function (req, res){
+  var form = new formidable.IncomingForm();
+  form.parse(req, function (err, fields, files) {
+    var oldpath = files.filetoupload.path;
+    var newpath = path.join(__dirname, '../public/image/' + files.filetoupload.name);
+    fs.rename(oldpath, newpath, function (err) {
+      if (err) throw err;
+      res.write('File uploaded and moved!');
+    });
+});
+})
 
 
 // GET for logout
