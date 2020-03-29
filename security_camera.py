@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import pymongo
 from datetime import datetime
-import glob, os
+import os
 
 client = pymongo.MongoClient("mongodb+srv://304cem:Blacklotus123@cluster0-gfbbm.azure.mongodb.net")
 mydb = client["python"]
@@ -78,7 +78,6 @@ while i < len(d):
     #print(known_face_encodings)
     i = i + 1
 
-
 known_face_names = []
 for quotation in file_list:
     new = '{}'.format(quotation[:-4])
@@ -125,7 +124,7 @@ while True:
 
             now = datetime.now()
             dt_string = now.strftime("%d/%m/%Y %H:%M")
-            #print(name)
+            print(name)
             mydict = {
                 "name": name,
                 "DateAndTime": dt_string

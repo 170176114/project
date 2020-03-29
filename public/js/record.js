@@ -10,7 +10,7 @@ $.ajax({
             $(".flex-container").append(
                 
                 '<li class="flex-item">' + 
-                '<img src="../static/image/' + data[i]._id.name + 'width="300" height="220">'+
+                '<img src="../static/image/' + data[i]._id.name + '" width="300" height="220"> ' +
                 '</li>'
             );
         }
