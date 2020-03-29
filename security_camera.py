@@ -80,7 +80,7 @@ while i < len(d):
 
 known_face_names = []
 for quotation in file_list:
-    new = '{}'.format(quotation[:-4])
+    new = '{}'.format(quotation)
     known_face_names.append(new)
 # known_face_names = [
 #     #name
