@@ -143,7 +143,8 @@ router.post('/fileupload', function (req, res){
     var newpath = path.join(__dirname, '../public/image/' + files.filetoupload.name);
     fs.rename(oldpath, newpath, function (err) {
       if (err) throw err;
-      res.write('File uploaded and moved!');
+      res.write('Image uploaded');
+      res.end();
     });
 });
 })
