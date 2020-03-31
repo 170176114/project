@@ -19,12 +19,10 @@ url='http://10.0.1.7:8080/shot.jpg'
 #     print("Unable to read camera feed")
 
 
-frame_width = int(1080)
-frame_height = int(720)
+
 time_now = datetime.now()
 filename = time_now.strftime("%Y%m%d%H%M")
-
-out = cv2.VideoWriter("./public/video/"+filename+'.mp4', cv2.VideoWriter_fourcc(*'H264'), 10, (frame_width, frame_height))
+out = cv2.VideoWriter("./public/video/"+filename+'.mp4', cv2.VideoWriter_fourcc(*'avc1'), 10, (1920,1080))
 
 col = mydb["video"]
 video_name = {"name": filename}
