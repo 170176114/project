@@ -1,4 +1,5 @@
 import face_recognition
+import urllib.request
 import cv2
 import numpy as np
 import pymongo
@@ -9,9 +10,10 @@ client = pymongo.MongoClient("mongodb+srv://304cem:Blacklotus123@cluster0-gfbbm.
 mydb = client["python"]
 mycol = mydb["records"]
 
-
+#video_capture = cv2.VideoCapture('http://10.0.1.3:8080/shot.jpg')
 
 video_capture = cv2.VideoCapture(0)
+
 
 if (video_capture.isOpened() == False):
     print("Unable to read camera feed")
@@ -74,6 +76,7 @@ known_face_encodings = []
 
 i = 0
 while i < len(d):
+
     known_face_encodings.append( d["image%s"%i] )
     #print(known_face_encodings)
     i = i + 1
