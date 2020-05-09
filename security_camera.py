@@ -10,7 +10,7 @@ client = pymongo.MongoClient("mongodb+srv://304cem:Blacklotus123@cluster0-gfbbm.
 mydb = client["python"]
 mycol = mydb["records"]
 
-#video_capture = cv2.VideoCapture('http://10.0.1.3:8080/shot.jpg')
+#video_capture = cv2.VideoCapture('http://10.0.1.29:8080/shot.jpg')
 
 video_capture = cv2.VideoCapture(0)
 

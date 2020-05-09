@@ -13,7 +13,7 @@ mycol = mydb["records"]
 #video_capture = cv2.VideoCapture('http://10.0.1.3:8080/shot.jpg')
 
 #video_capture = cv2.VideoCapture(0)
-url='http://10.0.1.2:8080/shot.jpg'
+url='http://10.0.1.27:8080/shot.jpg'
 
 # if (video_capture.isOpened() == False):
 #     print("Unable to read camera feed")
@@ -82,13 +82,9 @@ while i < len(d):
 known_face_names = []
 for quotation in file_list:
     new = '{}'.format(quotation)
-    known_face_names.append(new)
-# known_face_names = [
-#     #name
-#         # "tang",
-#         # "test"
-# ]
-#known_face_names.append(name)
+    name = os.path.splitext(new)
+    print(name[0])
+    known_face_names.append(name[0])
 
 
 # Initialize some variables
@@ -120,7 +116,7 @@ while True:
         for face_encoding in face_encodings:
             # See if the face is a match for the known face(s)
             matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
-            name = "Unknown"
+            name = "Unknown_people"
 
 
             face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
