@@ -104,7 +104,7 @@ router.get('/records', (req, res) => {
                   _id: {name: "$name", DateAndTime: "$DateAndTime"}, count: {$sum: 1} 
               }
       },
-      { $sort: {"_id.DateAndTime" : -1}}
+      { $sort: {"_id.DateAndTime" : 1}}
   ]).toArray(function(err, result){
               if (err) throw err;
               res.json(result);
@@ -117,9 +117,10 @@ router.get('/records', (req, res) => {
 
 router.get('/video', (req, res) => {
   MongoClient.connect(url, function(err, db) {
+    var name = {name: -1}
     if (err) throw err;
     var dbo = db.db("python");
-    dbo.collection('video').find({}).toArray(function (err, result) {
+    dbo.collection('video').find({}).sort(name).toArray(function (err, result) {
       if (err) throw err;
       res.json(result);
       db.close();
