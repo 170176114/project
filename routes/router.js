@@ -129,7 +129,9 @@ router.get('/video', (req, res) => {
 });
 
 router.get('/all_record', function (req, res, next){
+
   res.render(path.join(__dirname,'../views/record.ejs'),{name:username})
+  
 })
 
 router.get('/upload_image', function (req, res, next){
