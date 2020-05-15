@@ -13,7 +13,7 @@ mycol = mydb["records"]
 #video_capture = cv2.VideoCapture('http://10.0.1.3:8080/shot.jpg')
 
 #video_capture = cv2.VideoCapture(0)
-url='http://10.104.92.7:8080/shot.jpg'
+url='http://10.0.1.35:8080/shot.jpg'
 
 # if (video_capture.isOpened() == False):
 #     print("Unable to read camera feed")
@@ -38,7 +38,7 @@ def file_is_hidden(p):
         return attribute & (win32con.FILE_ATTRIBUTE_HIDDEN | win32con.FILE_ATTRIBUTE_SYSTEM)
     else:
         return p.startswith('.') #linux-osx
-file_list = [f for f in os.listdir('./public/image') if not file_is_hidden(f)]
+file_list = [f for f in os.listdir('Desktop/project/public/image') if not file_is_hidden(f)]
 for x in file_list:
    # me_image = face_recognition.load_image_file("./image/" + x )
     z = len(file_list)
@@ -48,7 +48,7 @@ for x in file_list:
     #     d["image{0}".format(g)] = face_recognition.face_encodings(face_recognition.load_image_file("./image/" + x))[0]
     #print(x)
     if count < z:
-        d["image{0}".format(count)] = face_recognition.face_encodings(face_recognition.load_image_file("./public/image/" + x))[0]
+        d["image{0}".format(count)] = face_recognition.face_encodings(face_recognition.load_image_file("Desktop/project/public/image/" + x))[0]
         count = count + 1
 #print(d["image1"])
 #print(d)
