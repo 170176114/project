@@ -13,7 +13,7 @@ mycol = mydb["records"]
 #video_capture = cv2.VideoCapture('http://10.0.1.3:8080/shot.jpg')
 
 #video_capture = cv2.VideoCapture(0)
-url='http://10.0.1.27:8080/shot.jpg'
+url='http://10.104.92.7:8080/shot.jpg'
 
 # if (video_capture.isOpened() == False):
 #     print("Unable to read camera feed")
@@ -83,8 +83,9 @@ known_face_names = []
 for quotation in file_list:
     new = '{}'.format(quotation)
     name = os.path.splitext(new)
+    known_face_names.append(new)
     print(name[0])
-    known_face_names.append(name[0])
+    #known_face_names.append(name[0])
 
 
 # Initialize some variables
