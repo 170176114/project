@@ -22,7 +22,7 @@ url='http://10.0.1.35:8080/shot.jpg'
 
 time_now = datetime.now()
 filename = time_now.strftime("%Y%m%d%H%M")
-out = cv2.VideoWriter("./public/video/"+filename+'.mp4', cv2.VideoWriter_fourcc(*'avc1'), 10, (1920,1080))
+out = cv2.VideoWriter("Desktop/project/public/video/"+filename+'.mp4', cv2.VideoWriter_fourcc(*'avc1'), 10, (1920,1080))
 
 col = mydb["video"]
 video_name = {"name": filename}
