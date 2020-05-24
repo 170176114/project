@@ -13,6 +13,19 @@ var url = "mongodb+srv://304cem:Blacklotus123@cluster0-gfbbm.azure.mongodb.net/t
 app.set('view engine', 'ejs');  
 mongoose.connect('mongodb+srv://304cem:Blacklotus123@cluster0-gfbbm.azure.mongodb.net/python');
 
+
+var multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb(null, './public/image/');
+  },
+  filename: function(req, file, cb){
+    cb(null, file.originalname);
+  }
+});
+var upload = multer({storage: storage})
+
+
 var username = "";
 router.use(bodyParser.urlencoded({extended: false}));
 // GET route for homepage
@@ -139,19 +152,28 @@ router.get('/upload_image', function (req, res, next){
   res.render(path.join(__dirname,'../views/upload.ejs'),{name:username})
 })
 
-router.post('/upload', (req, res) => {
-  var form = new formidable.IncomingForm();
-  form.parse(req, function (err, fields, files) {
-    image = files.filetoupload.path;
-    var oldpath = files.filetoupload.path;
-    var newpath = path.join(__dirname, '../public/image/' + files.filetoupload.name);
-    fs.rename(oldpath, newpath, function (err) {
-      if (err) throw err;
-      res.end;
-    })
-  })
-  res.render(path.join(__dirname,'../views/main.ejs'),{name:username})
+router.post('/create', upload.single('filetoupload') ,function (req, res, next){
+  fs.rename('./public/image/' + req.file.filename, './public/image/' + req.body.test + path.extname(req.file.filename), function(err) {
+    if ( err ) console.log('ERROR: ' + err);
+});
+res.render(path.join(__dirname,'../views/main.ejs'),{name:username})
 })
+
+
+// router.post('/upload', (req, res) => {
+//   console.log(res)
+//   var form = new formidable.IncomingForm();
+//   form.parse(req, function (err, fields, files) {
+//     image = files.filetoupload.path;
+//     var oldpath = files.filetoupload.path;
+//     var newpath = path.join(__dirname, '../public/image/' + files.filetoupload.name);
+//     fs.rename(oldpath, newpath, function (err) {
+//       if (err) throw err;
+//       res.end;
+//     })
+//   })
+//   res.render(path.join(__dirname,'../views/main.ejs'),{name:username})
+// })
 
 
 // GET for logout
