@@ -13,7 +13,7 @@ mycol = mydb["records"]
 #video_capture = cv2.VideoCapture('http://10.0.1.3:8080/shot.jpg')
 
 #video_capture = cv2.VideoCapture(0)
-url='http://10.0.1.6:8080/shot.jpg'
+url='http://10.0.1.3:8080/shot.jpg'
 
 # if (video_capture.isOpened() == False):
 #     print("Unable to read camera feed")
